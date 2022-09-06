@@ -443,3 +443,45 @@ ActionView::MissingTemplate - Missing template api/errors/internal_server_error 
 Searched in::
   app/controllers/application_controller.rb:66:in `unhandled_error'
 
+Started GET "/" for ::1 at 2022-09-06 08:56:06 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/alan/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/alan/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 603)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms | Allocations: 3113)
+
+
+Started POST "/api/test" for ::1 at 2022-09-06 08:56:12 -0700
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 904)
+
+
+Started GET "/api/session" for ::1 at 2022-09-06 08:56:31 -0700
+Processing by Api::SessionsController#show as JSON
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.2ms | Allocations: 300)
+
+NameError - undefined local variable or method `banana' for #<Api::SessionsController:0x00000000004100>
+
+    banana
+    ^^^^^^:
+	app/controllers/api/sessions_controller.rb:3:in `show'
+
+Completed 500 Internal Server Error in 15ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 4507)
+
+
+Started GET "/" for ::1 at 2022-09-06 08:57:49 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/alan/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/alan/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 322)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 970)
+
+
+Started GET "/api/session" for ::1 at 2022-09-06 08:57:50 -0700
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+Completed 200 OK in 22ms (Views: 0.6ms | ActiveRecord: 4.7ms | Allocations: 4834)
+
+
