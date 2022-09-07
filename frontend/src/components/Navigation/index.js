@@ -15,19 +15,24 @@ function Navigation() {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <ul className={'sessionLinks'}>
+          <button id={"loginButton"}><NavLink id={"loginText"} to="/login">Log In</NavLink></button>
+          <button id={"signupButton"}><NavLink id={"signupText"} to="/signup">Sign Up</NavLink></button>
+        </ul>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {sessionLinks}
-      </li>
-    </ul>
+    <>
+      <div id={'banner'}></div>
+      <ul className={'navbar'}>
+        <li>
+          <NavLink id='home' exact to="/"><i class="fa-brands fa-stack-overflow"></i>stack<span>underflow</span></NavLink>
+          {sessionLinks}
+        </li>
+      </ul>
+    </>
   );
 }
 

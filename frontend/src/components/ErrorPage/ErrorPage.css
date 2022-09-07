@@ -1,0 +1,32 @@
+#errorPage {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+#errorPage i {
+  font-size: 100px;
+  color: lightgray;
+  margin: 30px;
+  margin-right: 50px;
+}
+
+#errorMessage li {
+  margin: 10px;
+  margin-bottom: 15px;
+}
+
+#errorMessage p:first-child {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+#errorMessage p:nth-child(2) {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+
+

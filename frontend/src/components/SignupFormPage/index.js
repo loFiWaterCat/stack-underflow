@@ -37,21 +37,21 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+    <div id={'signupPage'}>
+    <div id={'signupBlurb'}>
+      <h2>Join the Stack Underflow community</h2>
+      <p><i class="fa-regular fa-circle-question"></i> Get unstuck - ask a question</p>
+      <p> <i class="fa-solid fa-arrow-up"></i> Unlock new priveleges like voting and commenting </p>
+      <p><i class="fa-solid fa-tags"></i> Save your favorite tags, filters, and jobs</p>
+      <p><i class="fa-solid fa-trophy"></i> Earn reputation and badges </p>
+    </div>
+    <form class={"signupForm"} onSubmit={handleSubmit}>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
       <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
+        <p>Display Name</p>
         <input
           type="text"
           value={username}
@@ -60,7 +60,16 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Password
+        <p>Email</p>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <p>Password</p>
         <input
           type="password"
           value={password}
@@ -69,7 +78,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Confirm Password
+        <p>Confirm Password</p>
         <input
           type="password"
           value={confirmPassword}
@@ -77,8 +86,10 @@ function SignupFormPage() {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button id={'submitButton'} type="submit">Sign Up</button>
     </form>
+    </div>
+    </>
   );
 }
 

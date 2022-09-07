@@ -30,13 +30,21 @@ const LoginFormPage = props => {
       });
   }
 
+  const demoLogin = (e) => {
+    e.preventDefault();
+
+    return dispatch(sessionActions.login({ credential: "demo@user.io", password: "password" }))
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <div id="loginPage">
+    <i class="fa-brands fa-stack-overflow"></i>
+    <form className={'loginForm'} onSubmit={handleSubmit}>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
       <label>
-        Username or Email
+        <p>Email</p>
         <input
           type="text"
           value={credential}
@@ -45,7 +53,7 @@ const LoginFormPage = props => {
         />
       </label>
       <label>
-        Password
+        <p>Password</p>
         <input
           type="password"
           value={password}
@@ -53,8 +61,11 @@ const LoginFormPage = props => {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button id={'submitButton'} type="submit">Log In</button>
     </form>
+    <button id={'demoSubmitButton'} onClick={demoLogin}>Demo User</button>
+
+    </div>
   )
 }
 

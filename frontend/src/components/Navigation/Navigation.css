@@ -1,0 +1,81 @@
+.navbar {
+  z-index: 4;
+  position: fixed;
+  padding-top: 2.5vh;
+  width: 100%;
+  background-color: #f8f9f9;
+  box-shadow: 0px 2px 3px lightgrey;
+}
+
+.navbar > li {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sessionLinks * {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+#loginText {
+  text-decoration: none;
+  color: #7fa6c1;
+}
+
+#signupText {
+  text-decoration: none;
+  color: white;
+}
+
+#loginButton {
+  background-color: #e1ecf4;
+  border: 1px solid #bdd3e3;
+  border-radius: 3px;
+  margin-left: 7px;
+}
+
+#loginButton:hover {
+  background-color: #b6cfe0;
+}
+
+#signupButton {
+  background-color: #0a95ff;
+  border: 1px solid #38a9ff;
+  border-radius: 3px;
+  margin-left: 7px;
+}
+
+#signupButton:hover {
+  background-color: #0b80d9
+}
+
+#banner {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background-color: #f48225;
+  width: 100%;
+  height: 0.4vh;
+}
+
+#home {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  margin-top: -10px;
+}
+
+#home i {
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+#home span {
+  font-weight: bold;
+  margin-left: 3px;
+}
