@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  email           :string           not null
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
   has_secure_password
 
@@ -43,5 +55,17 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= generate_unique_session_token
   end
+
+  # Other associations
+  
+  has_many :questions,
+    foreign_key: :author_id,
+    class_name: :Question,
+    dependent: :destroy
+
+  has_many :answers,
+    foreign_key: :author_id,
+    class_name: :Answer,
+    dependent: :destroy
 
 end
