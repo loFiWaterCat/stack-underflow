@@ -5,8 +5,6 @@ import { Redirect } from 'react-router-dom';
 import './ErrorPage.css'
 
 const ErrorPage = () => {
-  console.log("this si errors");
-
   return (
     <div id="errorPage">
     <i class="fa-solid fa-triangle-exclamation"></i>
