@@ -42,11 +42,34 @@ ApplicationRecord.transaction do
     body: 'Ok, hear me out. I have a million dollar idea. Just need somebody to make a website for me'
   )
 
+  Question.create!(
+    author_id: 1,
+    title: 'Recruiting fullstack developers',
+    body: 'Paying with exposure',
+  )
+
+  Question.create!(
+    author_id: 3,
+    title: 'Hello Everyone!',
+    body: "I've been trying to reach you about your extended car warrenty"
+  )
 
   Answer.create!(
     author_id: 2,
     question_id: 1,
     body: 'Heard this one before. Do it yourself'
+  )
+
+  Answer.create!(
+    author_id: 4,
+    question_id: 2,
+    body: 'I only take cash'
+  )
+
+  Answer.create!(
+    author_id: 2,
+    question_id: 2,
+    body: 'Good thing exposure really fills me up'
   )
 
   puts "Done!"

@@ -8,6 +8,7 @@ import FILLER from "./components/FILLER";
 import ErrorPage from "./components/ErrorPage";
 import HomePage from "./components/HomePage";
 import Splash from "./components/Splash";
+import QuestionShowPage from "./components/QuestionShowPage"
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -33,6 +34,9 @@ function App() {
           <Route exact path="/">
             {rootPage}
           </Route>
+          <Route exact path="/questions/:questionId">
+            <QuestionShowPage />
+          </Route>
           <Route path="*">
             <ErrorPage />
           </Route>
@@ -40,5 +44,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;

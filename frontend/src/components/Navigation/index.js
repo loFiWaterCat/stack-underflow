@@ -28,7 +28,7 @@ function Navigation() {
       <div id={'banner'}></div>
       <ul className={'navbar'}>
         <li>
-          <NavLink id='home' exact to="/"><i class="fa-brands fa-stack-overflow"></i>stack<span>underflow</span></NavLink>
+          <NavLink id='home' exact to="/"><i className="fa-brands fa-stack-overflow"></i>stack<span>underflow</span></NavLink>
           {sessionLinks}
         </li>
       </ul>
