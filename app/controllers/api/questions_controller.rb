@@ -3,6 +3,10 @@ class Api::QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @users = []
+    @questions.each do |question|
+      @users.push(question.author)
+    end
 
     render :index
   end
@@ -11,11 +15,17 @@ class Api::QuestionsController < ApplicationController
     @question = Question.find_by_id(params[:id])
     @answers = @question.answers
 
+    # Build the related users array
+    @users = [@question.author]
+
+    @answers.each do |answer|
+      @users.push(answer.author)
+    end
+
     render :show
   end
 
   def create
-    debugger
     @question = Question.new(question_params)
 
     if @question.save!
@@ -23,6 +33,21 @@ class Api::QuestionsController < ApplicationController
     else
       render json: { errors: @question.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def update
+    @question = Question.find_by_id(params[:id])
+    if @question.update(question_params)
+      render :show
+    else
+      render json: { errors: @question.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @question = Question.find_by_id(params[:id])
+    @question.destroy
+    head :no_content
   end
 
   private

@@ -1,0 +1,32 @@
+#answerForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  height: 200%;
+  padding-bottom: 50px;
+
+  label {
+    font-size: 25px;
+  }
+
+  textarea {
+    margin-top: 20px;
+    height: 100%;
+  }
+
+  input {
+    margin-top: 25px;
+    width: 17%;
+    height: 13%;
+    background-color: #0a95ff;
+    color: white;
+    border: none;
+    border-radius: 5px
+  }
+
+  input:hover {
+    cursor: pointer;
+    background-color: #0b80d9;
+  }
+  
+}

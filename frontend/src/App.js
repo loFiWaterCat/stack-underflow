@@ -9,6 +9,7 @@ import ErrorPage from "./components/ErrorPage";
 import HomePage from "./components/HomePage";
 import Splash from "./components/Splash";
 import QuestionShowPage from "./components/QuestionShowPage"
+import QuestionForm from "./components/QuestionForm"
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -33,6 +34,12 @@ function App() {
           </Route>
           <Route exact path="/">
             {rootPage}
+          </Route>
+          <Route exact path="/questions/ask">
+            <QuestionForm />
+          </Route>
+          <Route exact path="/questions/:questionId/edit">
+            <QuestionForm />
           </Route>
           <Route exact path="/questions/:questionId">
             <QuestionShowPage />

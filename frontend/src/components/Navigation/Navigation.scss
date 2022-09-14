@@ -1,10 +1,20 @@
-.navbar {
+#navbar {
+  display: flex;
+  flex-direction: column;
   z-index: 4;
-  position: fixed;
-  padding-top: 2vh;
+  position: sticky;
+  top: 0;
   width: 100%;
   background-color: #f8f9f9;
   box-shadow: 0px 2px 3px lightgrey;
+  height: 6vh;
+
+  ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 100%;
+  }
 }
 
 .navbar > li {
@@ -12,13 +22,9 @@
   justify-content: space-around;
 }
 
-.sessionLinks * {
-  padding-bottom: 7px;
-  padding-top: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-top: -10px;
-  margin-bottom: 5px;
+.sessionLinks {
+  display: flex;
+  align-items: center;
 }
 
 #loginText {
@@ -36,10 +42,13 @@
   border: 1px solid #bdd3e3;
   border-radius: 3px;
   margin-left: 7px;
+  height: 70%;
+  color: #7fa6c1;
 }
 
 #loginButton:hover {
   background-color: #b6cfe0;
+  cursor: pointer;
 }
 
 #signupButton {
@@ -47,14 +56,16 @@
   border: 1px solid #38a9ff;
   border-radius: 3px;
   margin-left: 7px;
+  height: 70%;
+  color: white;
 }
 
 #signupButton:hover {
-  background-color: #0b80d9
+  background-color: #0b80d9;
+  cursor: pointer;
 }
 
 #banner {
-  position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
@@ -64,11 +75,24 @@
 }
 
 #home {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: black;
   font-size: 20px;
-  margin-top: -8px;
-  padding-bottom: 10px;
+  height: 100%;
+
+  a {
+    height: 100%;
+  }
+  
+  a > * {
+    height: 100%
+  }
+}
+
+#home:hover {
+  background-color: lightgray;
 }
 
 #home i {

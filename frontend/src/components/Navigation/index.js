@@ -1,11 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import './Navigation.scss';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+
+  let history = useHistory();
 
   let sessionLinks;
   if (sessionUser) {
@@ -16,8 +18,8 @@ function Navigation() {
     sessionLinks = (
       <>
         <ul className={'sessionLinks'}>
-          <button id={"loginButton"}><NavLink id={"loginText"} to="/login">Log In</NavLink></button>
-          <button id={"signupButton"}><NavLink id={"signupText"} to="/signup">Sign Up</NavLink></button>
+          <button id={"loginButton"} onClick={() => history.push('/login')} >Log In</button>
+          <button id={"signupButton"} onClick={() => history.push('/signup')}>Sign Up</button>
         </ul>
       </>
     );
@@ -25,13 +27,17 @@ function Navigation() {
 
   return (
     <>
-      <div id={'banner'}></div>
-      <ul className={'navbar'}>
-        <li>
-          <NavLink id='home' exact to="/"><i className="fa-brands fa-stack-overflow"></i>stack<span>underflow</span></NavLink>
-          {sessionLinks}
-        </li>
-      </ul>
+      <div id="navbar">
+        <div id={'banner'}></div>
+        <ul >
+          <li id='homeContainer'>
+            <NavLink id='home' exact to="/"><i className="fa-brands fa-stack-overflow"></i><p>stack<span>underflow</span></p></NavLink>
+          </li>
+            <div id='sessionLinks'>
+              {sessionLinks}
+            </div>
+        </ul>
+      </div>
     </>
   );
 }
