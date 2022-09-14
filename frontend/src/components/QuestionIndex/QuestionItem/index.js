@@ -14,7 +14,9 @@ const QuestionItem = ({ question, author }) => {
     <>
     <li className="questionItem">
       <Link to={`questions/${question.id}`}>{question.title}</Link>
-      <p>{author.username}</p>
+      <div id="userStats">
+        <p>{author.username}</p>
+      </div>
     </li>
     </>
   )

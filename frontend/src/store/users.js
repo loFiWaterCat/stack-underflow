@@ -1,25 +1,25 @@
 import csrfFetch from './csrf';
 import { RECEIVE_QUESTION, RECEIVE_QUESTIONS } from './questions'
 
-export const getQuestionUser = questionId => state => {
+export const getQuestionUser = question => state => {
   if (!state) {
     return null;
   } else if (!state.entities.users) {
     return null;
   } else {
-    const authorId = state.entities.questions[questionId]
-    return state.entites.users[authorId]
+    const authorId = state.entities.questions[question.id].authorId
+    return state.entities.users[authorId]
   }
 }
 
-export const getAnswerUser = answerId => state => {
+export const getAnswerUser = answer => state => {
   if (!state) {
     return null;
   } else if (!state.entities.users) {
     return null;
   } else {
-    const authorId = state.entities.questions[answerId]
-    return state.entites.users[authorId]
+    const authorId = state.entities.answers[answer.id].authorId
+    return state.entities.users[authorId]
   }
 }
 

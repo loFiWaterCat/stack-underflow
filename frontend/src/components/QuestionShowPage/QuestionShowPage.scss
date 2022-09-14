@@ -26,6 +26,22 @@
   }
 }
 
+#questionTop {
+  padding-bottom: 20px;
+}
+
+#date {
+  display: flex;
+
+  p {
+    padding-right: 30px;
+  }
+
+  span {
+    color: gray;
+  }
+}
+
 #questionTitle {
   font-size: 25px;
 }
@@ -43,16 +59,43 @@
 
 .answer {
   display: flex;
-  padding-top: 20px;
+  flex-direction: column;
+  padding-top: 40px;
   padding-bottom: 20px;
   border-bottom: 1px solid lightgray; 
   line-height: 1.5;
+
+  .answerBottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .answerBottomB {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .answerBottomLinks {
+    display: flex;
+    justify-content: space-between;
+    
+    a {
+      padding-right: 10px;
+      color: gray;
+      font-size: 14px;
+    }
+  }
+}
+
+.answerForm {
+
 }
 
 #bottomOfQuestion {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 #extralinks {
@@ -67,4 +110,15 @@
       color: darkgray;
     }
   }
+}
+
+#questionAuthorInfo {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#dateName {
+  display: flex;
+  flex-direction: column;
 }

@@ -22,7 +22,7 @@ const QuestionIndex = ( ) => {
   })
 
   if (questions === null) {
-    return null;
+    return null
   }
 
   return (

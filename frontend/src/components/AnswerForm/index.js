@@ -30,9 +30,9 @@ const AnswerForm = ({ question, resultAnswer }) => {
 
   const [answer, setAnswer] = useState(answerData);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     if (type === "Create Answer") {
-      const resNData = await dispatch(createAnswer(answer))
+      const resNData = dispatch(createAnswer(answer))
       const res = resNData.res;
       const data = resNData.data;
       if (res.ok === true) {
