@@ -133,7 +133,7 @@
   display: flex;
 }
 
-#vote {
+.vote {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,21 +156,21 @@
     }
   }
 
-  #upvote {
+  .upvote {
     border-bottom: 15px solid lightgray;
   } 
 
-  #downvote {
+  .downvote {
     border-top: 15px solid lightgray;
   }
 
 }
 
-.coloredUpvote {
+.upvote.coloredUpvote {
   border-bottom: 15px solid orange;
 }
 
-.coloredDownvote {
+.downvote.coloredDownvote {
   border-top: 15px solid orange;
 }
 

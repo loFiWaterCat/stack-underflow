@@ -142,10 +142,10 @@ const Answer = ({ question, answer, votes }) => {
     return (
       <div className="answer">
           <div id="voteNBody">
-            <div id="vote">
-            <button id="upvote" class={toggleColorUpvote} onClick={upvote}></button>
+            <div class="vote">
+            <button class={`upvote ${toggleColorUpvote}`} onClick={upvote}></button>
             {voteTotal}
-            <button id="downvote" class={toggleColorDownvote} onClick={downvote}></button>
+            <button class={`downvote ${toggleColorDownvote}`}  onClick={downvote}></button>
             </div>
           <p className="answerBody" >{answer.body}</p>
         </div>
@@ -168,10 +168,10 @@ const Answer = ({ question, answer, votes }) => {
     return (
       <div className="answer">
           <div id="voteNBody">
-            <div id="vote">
-            <button id="upvote" class={toggleColorUpvote} onClick={upvote}></button>
+            <div class="vote">
+            <button class={`upvote ${toggleColorUpvote}`}  onClick={upvote}></button>
             {voteTotal}
-            <button id="downvote" class={toggleColorDownvote} onClick={downvote} ></button>
+            <button class={`downvote ${toggleColorDownvote}`}  onClick={downvote} ></button>
             </div>
           <p className="answerBody">{answer.body}</p>
         </div>

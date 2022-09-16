@@ -145,10 +145,10 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
     </div>
     <div>
       <div id="voteNBody">
-      <div id="vote">
-            <button id="upvote" class={toggleColorUpvote} onClick={upvote} ></button>
+      <div class="vote">
+            <button class={`upvote ${toggleColorUpvote}`}  onClick={upvote} ></button>
             {voteTotal}
-            <button id="downvote" class={toggleColorDownvote} onClick={downvote} ></button>
+            <button class={`downvote ${toggleColorDownvote}`} onClick={downvote} ></button>
       </div>
       <p id='questionBody'> {question.body}</p>
       </div>
@@ -189,10 +189,10 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
     </div>
     <div>
       <div id="voteNBody">
-      <div id="vote">
-            <button id="upvote" class="toggleColorUpvote" onClick={upvote}></button>
+      <div class="vote">
+            <button class={`upvote ${toggleColorUpvote}`} onClick={upvote}></button>
             {voteTotal}
-            <button id="downvote" class="toggleColorDownvote" onClick={downvote}></button>
+            <button class={`downvote ${toggleColorDownvote}`}  onClick={downvote}></button>
       </div>
       <p id='questionBody'> {question.body}</p>
       </div>
