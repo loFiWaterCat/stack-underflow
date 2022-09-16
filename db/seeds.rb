@@ -26,6 +26,18 @@ ApplicationRecord.transaction do
     password: 'password'
   )
 
+  User.create!(
+    username: 'unjammylammy',
+    email: 'musicjimjam@yahoo.com',
+    password: 'password'
+  )
+
+  User.create!(
+    username: 'obama',
+    email: 'barack@whitehouse.com',
+    password: 'america'
+  )
+
 
   # More users
   10.times do 
@@ -37,39 +49,33 @@ ApplicationRecord.transaction do
   end
 
   Question.create!(
-    author_id: 1, 
-    title: 'How to build a website',
-    body: 'Ok, hear me out. I have a million dollar idea. Just need somebody to make a website for me'
+    author_id: 2, 
+    title: 'How to get started with a custom bass guitar?',
+    body: "Hi, I've been playing bass for a while now and have been looking to get a custom build, but all the prices are too crazy! I've been looking at woodworking to make my own, but have no idea where to start. Would appreciate any advice!"
   )
 
   Question.create!(
-    author_id: 1,
+    author_id: 1, 
     title: 'Recruiting fullstack developers',
-    body: 'Paying with exposure',
+    body: "Need a team to create this million dollar app I have in mind. I don't have much money, but I can give you exposure",
   )
 
   Question.create!(
     author_id: 3,
-    title: 'Hello Everyone!',
-    body: "I've been trying to reach you about your extended car warrenty"
+    title: 'How to convert an array of strings to numbers?',
+    body: "Hi, I'm trying to convert an array of strings to numbers in javascript. Any help would be appreciated."
   )
 
   Answer.create!(
-    author_id: 2,
-    question_id: 1,
-    body: 'Heard this one before. Do it yourself'
+    author_id: 3,
+    question_id: 2,
+    body: "Don't think you'll find much help here"
   )
 
   Answer.create!(
     author_id: 4,
-    question_id: 2,
-    body: 'I only take cash'
-  )
-
-  Answer.create!(
-    author_id: 2,
-    question_id: 2,
-    body: 'Good thing exposure really fills me up'
+    question_id: 1,
+    body: 'Woodworking is fun and another good hobby to get into, but you have to consider if the price and time investment is worth it. If you do not plan on doing more wood working in the future, it does not make sense to do all this work for just one guitar',
   )
 
   puts "Done!"
