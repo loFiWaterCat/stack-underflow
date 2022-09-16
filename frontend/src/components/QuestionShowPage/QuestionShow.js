@@ -44,7 +44,10 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
     numAnswersText = ""
   }
 
-  const user = useSelector(getQuestionUser(question))
+  let user = useSelector(getQuestionUser(question))
+  if (!user) {
+    user = currentUser;
+  }
 
   // Formatting the time
   let createdAt = (question.createdAt).split('-')
