@@ -104,3 +104,51 @@
   font-weight: bold;
   margin-left: 3px;
 }
+
+.dropdownButton {
+  background-color: #f8f9f9;
+  border: none;
+  color: gray;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  box-shadow: 0px 0px 3px 3px gainsboro;
+  background-color: light-gray;
+
+  a {
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+  }
+
+  a:hover {
+  }
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.logoutButton {
+  height: 100%;
+  margin-top: 5px;
+  background-color: #e1ecf4;
+  border: 1px solid #bdd3e3;
+  border-radius: 3px;
+  margin-left: 7px;
+  height: 70%;
+  color: #7fa6c1;
+}
+
+.logoutButton:hover {
+  background-color: #b6cfe0;
+  cursor: pointer;
+}

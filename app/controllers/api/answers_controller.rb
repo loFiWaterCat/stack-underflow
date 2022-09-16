@@ -1,8 +1,8 @@
 class Api::AnswersController < ApplicationController
   wrap_parameters include: Question.attribute_names + ['authorId'] + ['questionId']
   def index
-    # CURRENTLY NOt DOING ANYTHING
-    @answers = Answers.all
+    # Not doing anything
+    @answers = Answer.all
   end
 
   def create

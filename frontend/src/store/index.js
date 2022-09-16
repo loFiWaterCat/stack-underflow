@@ -4,11 +4,13 @@ import session from './session';
 import questions from './questions';
 import answers from './answers';
 import users from './users';
+import votes from './votes';
 
 const entitiesReducer = combineReducers({
   questions,
   answers,
   users,
+  votes,
 })
 
 const rootReducer = combineReducers({

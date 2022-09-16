@@ -68,7 +68,6 @@ const answerReducer = ( state = {}, action) => {
     case RECEIVE_QUESTION:
       return { ...newState, ...action.payload.answers };
     case REMOVE_ANSWER:
-      console.log(action.payload)
       delete newState[action.payload];
       return newState;
     default:

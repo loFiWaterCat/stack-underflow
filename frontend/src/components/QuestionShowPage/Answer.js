@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 import { deleteAnswer } from '../../store/answers'
 import { getAnswerUser } from '../../store/users'
 import { getCurrentUser } from '../../store/session'
+import { createVote, updateVote, deleteVote } from '../../store/votes'
 
-const Answer = ({ question, answer }) => {
+const Answer = ({ question, answer, votes }) => {
   const dispatch = useDispatch()
   const [form, setForm] = useState(false)
 
@@ -27,6 +28,32 @@ const Answer = ({ question, answer }) => {
   updatedAt[3] = updatedAt[3].slice(0, 5)
   const updatedAtFinal = updatedAt[1].concat("/").concat(updatedAt[2]).concat("/").concat(updatedAt[0]).concat(" ").concat(updatedAt[3])
 
+  const [voteTotal, setVoteTotal] = useState(0);
+
+  // Calculate vote total
+  
+
+  useEffect(() => {
+    const calcVote = () => {
+      let count = 0;
+      if (!votes) {
+        return null;
+      }
+      Object.values(votes).forEach(vote => {
+        if (vote.value) {
+          count += 1;
+        } else {
+          count -= 1;
+        }
+      })
+
+      setVoteTotal(count)
+    }
+
+    calcVote();
+
+  }, [votes])
+
   if (!answer) {
     return null
   }
@@ -39,11 +66,89 @@ const Answer = ({ question, answer }) => {
     dispatch(deleteAnswer(answer.id))
   }
 
+  // Toggle color for arrows
+  let toggleColorUpvote = "noColor";
+  for (const [ind, vote] of Object.entries(votes)) {
+    if (vote.userId === currentUser.id && vote.value === true) {
+      toggleColorUpvote = "coloredUpvote";
+    }
+  }
+  let toggleColorDownvote = "noColor";
+  for (const [ind, vote] of Object.entries(votes)) {
+    if (vote.userId === currentUser.id && vote.value === false) {
+      toggleColorDownvote = "coloredDownvote";
+    }
+  }
+
+
+
+
+  // Upvote
+  const upvote = e => {
+    let vote = {userId: currentUser.id, answerId: answer.id, value: true}
+    
+    // Check if the user has already upvoted the answer
+    let alreadyVote = false;
+    let valueHolder = true;
+    console.log(votes)
+    if (!votes) {
+      return null;
+    }
+    votes.forEach(answerVote => {
+      if (answerVote.answerId === answer.id && answerVote.userId === currentUser.id) {
+        alreadyVote = true;
+        vote.id = answerVote.id;
+        valueHolder = answerVote.value;
+      }
+    })
+    if (!alreadyVote) {
+      dispatch(createVote(vote))
+    } else if (valueHolder === false) {
+      dispatch(updateVote(vote))
+    } else {
+      // Delete the vote
+      dispatch(deleteVote(vote.id))
+    }
+  }
+  
+  // Downvote
+    const downvote = e => {
+    let vote = {userId: currentUser.id, answerId: answer.id, value: false}
+    
+    // Check if the user has already upvoted the answer
+    let alreadyVote = false;
+    let valueHolder = false ;
+    votes.forEach(answerVote => {
+      if (answerVote.answerId === answer.id && answerVote.userId === currentUser.id) {
+        alreadyVote = true;
+        vote.id = answerVote.id;
+        valueHolder = answerVote.value;
+      }
+    })
+    if (!alreadyVote) {
+      dispatch(createVote(vote))
+    } else if (valueHolder === true) {
+      dispatch(updateVote(vote))
+    } else {
+      // Delete the vote
+      dispatch(deleteVote(vote.id))
+    }
+  }
+
+
+
   // Conditionally render the edit form as needed
   if (answer.authorId !== currentUser.id) {
     return (
       <div className="answer">
-        <p className="answerBody">{answer.body}</p>
+          <div id="voteNBody">
+            <div id="vote">
+            <button id="upvote" class={toggleColorUpvote} onClick={upvote}></button>
+            {voteTotal}
+            <button id="downvote" class={toggleColorDownvote} onClick={downvote}></button>
+            </div>
+          <p className="answerBody" >{answer.body}</p>
+        </div>
         <div className="answerBottomB">
           <div id="dateName">
           <p>{updatedAtFinal}</p>
@@ -62,7 +167,14 @@ const Answer = ({ question, answer }) => {
   } else {
     return (
       <div className="answer">
-        <p className="answerBody">{answer.body}</p>
+          <div id="voteNBody">
+            <div id="vote">
+            <button id="upvote" class={toggleColorUpvote} onClick={upvote}></button>
+            {voteTotal}
+            <button id="downvote" class={toggleColorDownvote} onClick={downvote} ></button>
+            </div>
+          <p className="answerBody">{answer.body}</p>
+        </div>
         <div className="answerBottom">
           <div className="answerBottomLinks">
             <a onClick={toggleForm}>Edit</a>

@@ -21,3 +21,13 @@ if @users
     end
   end
 end
+
+if @votes
+  json.votes do
+    @votes.each do |vote|
+      json.set! vote.id do
+        json.extract! vote, :id, :user_id, :question_id, :answer_id, :value
+      end
+    end
+  end
+end

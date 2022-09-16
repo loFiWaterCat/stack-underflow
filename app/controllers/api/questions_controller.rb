@@ -14,12 +14,22 @@ class Api::QuestionsController < ApplicationController
   def show
     @question = Question.find_by_id(params[:id])
     @answers = @question.answers
+    @votes = []
 
     # Build the related users array
     @users = [@question.author]
 
+    # Build the related votes array
+    if @question.votes
+      @votes = @question.votes
+    end
+
+
     @answers.each do |answer|
       @users.push(answer.author)
+      if answer.votes
+        @votes += answer.votes
+      end
     end
 
     render :show

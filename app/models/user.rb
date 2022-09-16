@@ -68,4 +68,9 @@ class User < ApplicationRecord
     class_name: :Answer,
     dependent: :destroy
 
+  has_many :votes,
+    foreign_key: :user_id,
+    class_name: :Vote,
+    dependent: :destroy
+
 end

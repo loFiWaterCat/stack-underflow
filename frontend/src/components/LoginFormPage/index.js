@@ -39,7 +39,7 @@ const LoginFormPage = props => {
 
   return (
     <div id="loginPage">
-    <i class="fa-brands fa-stack-overflow"></i>
+    <i className="fa-brands fa-stack-overflow"></i>
     <form className={'loginForm'} onSubmit={handleSubmit}>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}

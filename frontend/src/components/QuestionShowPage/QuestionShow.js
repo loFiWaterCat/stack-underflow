@@ -4,18 +4,36 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import { deleteQuestion } from '../../store/questions'
 import { getQuestionUser } from '../../store/users'
 import { getCurrentUser } from '../../store/session'
+import { getQuestionVotes, createVote, deleteVote, updateVote } from '../../store/votes'
 import Answer from './Answer'
 
-const QuestionShow = ({ question, answers }) => {
+const QuestionShow = ({ question, answers, votes, answerVotes }) => {
   const dispatch = useDispatch();
 
   let answerArray = Object.values(answers);
   const history = useHistory();
   const currentUser = useSelector(getCurrentUser());
+  const [voteTotal, setVoteTotal] = useState(0);
+
+  // Calculate vote total
 
   useEffect(() => {
-    return
-  }, [answerArray])
+    const calcVote = () => {
+      let count = 0;
+      Object.values(votes).forEach(vote => {
+        if (vote.value) {
+          count += 1;
+        } else {
+          count -= 1;
+        }
+      })
+
+      setVoteTotal(count)
+    }
+
+    calcVote();
+
+  }, [answerArray, votes])
 
   // Count of the answers
   let numAnswers = answerArray.length
@@ -41,15 +59,74 @@ const QuestionShow = ({ question, answers }) => {
   updatedAt[3] = updatedAt[3].slice(0, 5)
   const updatedAtFinal = updatedAt[1].concat("/").concat(updatedAt[2]).concat("/").concat(updatedAt[0]).concat(" ").concat(updatedAt[3])
 
-  console.log("createdAtFinal", createdAtFinal)
-  console.log("Updated At", updatedAtFinal)
-
   if (numAnswers === 0) {
     numAnswers = ""
   }
 
   const handleClick = e => {
     dispatch(deleteQuestion(question.id));
+  }
+
+  // Toggle color for arrows
+  let toggleColorUpvote = "noColor";
+  for (const [ind, vote] of Object.entries(votes)) {
+    if (vote.userId === currentUser.id && vote.value === true) {
+      toggleColorUpvote = "coloredUpvote";
+    }
+  }
+  let toggleColorDownvote = "noColor";
+  for (const [ind, vote] of Object.entries(votes)) {
+    if (vote.userId === currentUser.id && vote.value === false) {
+      toggleColorDownvote = "coloredDownvote";
+    }
+  }
+
+
+  // Upvote
+  const upvote = e => {
+    let vote = {userId: currentUser.id, questionId: question.id, value: true}
+    
+    // Check if the user has already upvoted the question
+    let alreadyVote = false;
+    let valueHolder = true;
+    for (const [ind, questionVote] of Object.entries(votes)) {
+      if (questionVote.questionId === question.id && questionVote.userId === currentUser.id) {
+        alreadyVote = true;
+        vote.id = questionVote.id;
+        valueHolder = questionVote.value;
+      }
+    }
+    if (!alreadyVote) {
+      dispatch(createVote(vote))
+    } else if (valueHolder === false) {
+      dispatch(updateVote(vote))
+    } else {
+      // Delete the vote
+      dispatch(deleteVote(vote.id))
+    }
+  }
+  // Downvote 
+  const downvote = e => {
+    let vote = {userId: currentUser.id, questionId: question.id, value: false}
+    
+    // Check if the user has already upvoted the question
+    let alreadyVote = false;
+    let valueHolder = false;
+    for (const [ind, questionVote] of Object.entries(votes)) {
+      if (questionVote.questionId === question.id && questionVote.userId === currentUser.id) {
+        alreadyVote = true;
+        vote.id = questionVote.id;
+        valueHolder = questionVote.value;
+      }
+    }
+    if (!alreadyVote) {
+      dispatch(createVote(vote))
+    } else if (valueHolder === true) {
+      dispatch(updateVote(vote))
+    } else {
+      // Delete the vote
+      dispatch(deleteVote(vote.id))
+    }
   }
 
 
@@ -67,7 +144,14 @@ const QuestionShow = ({ question, answers }) => {
       </div>
     </div>
     <div>
+      <div id="voteNBody">
+      <div id="vote">
+            <button id="upvote" class={toggleColorUpvote} onClick={upvote} ></button>
+            {voteTotal}
+            <button id="downvote" class={toggleColorDownvote} onClick={downvote} ></button>
+      </div>
       <p id='questionBody'> {question.body}</p>
+      </div>
         <div id='bottomOfQuestion'>
           <div id="questionAuthorInfo">
             <p>{user.username}</p>
@@ -76,7 +160,13 @@ const QuestionShow = ({ question, answers }) => {
       <p id='answerCount'> {numAnswers} {numAnswersText}</p>
       <ul>
         { answerArray.map( answer => {
-              return <Answer key={answer.id} question={question} answer={answer} />
+              const answerRelatedVotes = []
+              for (const [ind, answerVote] of Object.entries(answerVotes)) {
+                if (answerVote.answerId === answer.id) {
+                  answerRelatedVotes.push(answerVote)
+                }
+              }
+              return <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes}/>
               })
         }
       </ul>
@@ -98,7 +188,14 @@ const QuestionShow = ({ question, answers }) => {
       </div>
     </div>
     <div>
+      <div id="voteNBody">
+      <div id="vote">
+            <button id="upvote" class="toggleColorUpvote" onClick={upvote}></button>
+            {voteTotal}
+            <button id="downvote" class="toggleColorDownvote" onClick={downvote}></button>
+      </div>
       <p id='questionBody'> {question.body}</p>
+      </div>
         <div id='bottomOfQuestion'>
           <div id="extralinks">
               <Link to={`/questions/${question.id}/edit`}>Edit</Link>
@@ -111,7 +208,13 @@ const QuestionShow = ({ question, answers }) => {
       <p id='answerCount'> {numAnswers} {numAnswersText}</p>
       <ul>
         { answerArray.map( answer => {
-              return <Answer key={answer.id} question={question} answer={answer} />
+              const answerRelatedVotes = []
+              for (const [ind, answerVote] of Object.entries(answerVotes)) {
+                if (answerVote.answerId === answer.id) {
+                  answerRelatedVotes.push(answerVote)
+                }
+              }
+              return <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes}/>
               })
         }
       </ul>
