@@ -14,6 +14,7 @@ class Api::QuestionsController < ApplicationController
   def show
     @question = Question.find_by_id(params[:id])
     @answers = @question.answers
+    @comments = @question.comments
     @votes = []
 
     # Build the related users array

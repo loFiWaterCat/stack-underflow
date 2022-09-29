@@ -24,4 +24,9 @@ class Answer < ApplicationRecord
     foreign_key: :answer_id,
     class_name: :Vote,
     dependent: :destroy
+
+  has_many :comments,
+    foreign_key: :answer_id,
+    class_name: :Comment,
+    dependent: :destroy
 end

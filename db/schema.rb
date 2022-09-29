@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_14_211035) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_28_205637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_211035) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_answers_on_author_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "question_id"
+    t.bigint "answer_id"
+    t.string "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_comments_on_answer_id"
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["question_id"], name: "index_comments_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -60,6 +72,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_211035) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users", column: "author_id"
+  add_foreign_key "comments", "answers"
+  add_foreign_key "comments", "questions"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "questions", "users", column: "author_id"
   add_foreign_key "votes", "answers"
   add_foreign_key "votes", "users"

@@ -31,3 +31,13 @@ if @votes
     end
   end
 end
+
+if @comments
+  json.comments do
+    @comments.each do |comment|
+      json.set! comment.id do
+        json.extract! comment, :id, :author_id, :question_id, :answer_id, :body
+      end
+    end
+  end
+end
