@@ -6,6 +6,8 @@ import { deleteAnswer } from '../../store/answers'
 import { getAnswerUser } from '../../store/users'
 import { getCurrentUser } from '../../store/session'
 import { createVote, updateVote, deleteVote } from '../../store/votes'
+import { getAnswerComments } from '../../store/comments'
+import Comment from './Comment'
 
 const Answer = ({ question, answer, votes }) => {
   const dispatch = useDispatch()
@@ -14,6 +16,7 @@ const Answer = ({ question, answer, votes }) => {
 
   const author = useSelector(getAnswerUser(answer));
   const currentUser = useSelector(getCurrentUser());
+  const answerComments = Object.values(useSelector(getAnswerComments(answer.id)))
 
   // Formatting time
   let createdAt = (question.createdAt).split('-')
@@ -141,38 +144,43 @@ const Answer = ({ question, answer, votes }) => {
   if (answer.authorId !== currentUser.id) {
     return (
       <div className="answer">
-          <div id="voteNBody">
-            <div className="vote">
+        <div id="voteNBody">
+          <div className="vote">
             <button className={`upvote ${toggleColorUpvote}`} onClick={upvote}></button>
             {voteTotal}
-            <button className={`downvote ${toggleColorDownvote}`}  onClick={downvote}></button>
-            </div>
+            <button className={`downvote ${toggleColorDownvote}`} onClick={downvote}></button>
+          </div>
           <p className="answerBody" >{answer.body}</p>
         </div>
         <div className="answerBottomB">
           <div id="dateName">
-          <p>{updatedAtFinal}</p>
-          <p>{author.username}</p>
+            <p>{updatedAtFinal}</p>
+            <p>{author.username}</p>
           </div>
         </div>
+          <ul>
+            {answerComments.map(comment => {
+              return <Comment key={comment.id} comment={comment} />
+            })}
+          </ul>
       </div>
     )
   }
   if (form) {
     return (
       <div className="answer">
-        <AnswerForm question={question} resultAnswer={answer}/>
+        <AnswerForm question={question} resultAnswer={answer} />
       </div>
     )
   } else {
     return (
       <div className="answer">
-          <div id="voteNBody">
-            <div className="vote">
-            <button className={`upvote ${toggleColorUpvote}`}  onClick={upvote}></button>
+        <div id="voteNBody">
+          <div className="vote">
+            <button className={`upvote ${toggleColorUpvote}`} onClick={upvote}></button>
             {voteTotal}
-            <button className={`downvote ${toggleColorDownvote}`}  onClick={downvote} ></button>
-            </div>
+            <button className={`downvote ${toggleColorDownvote}`} onClick={downvote} ></button>
+          </div>
           <p className="answerBody">{answer.body}</p>
         </div>
         <div className="answerBottom">
@@ -180,10 +188,10 @@ const Answer = ({ question, answer, votes }) => {
             <a onClick={toggleForm}>Edit</a>
             <a onClick={deleteAnswerClick}>Delete</a>
           </div>
-            <div id="dateName">
-              <p>{updatedAtFinal}</p>
-              <p>{author.username}</p>
-            </div>
+          <div id="dateName">
+            <p>{updatedAtFinal}</p>
+            <p>{author.username}</p>
+          </div>
         </div>
       </div>
     )

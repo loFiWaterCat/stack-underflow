@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { deleteQuestion } from '../../store/questions'
 import { getQuestionUser } from '../../store/users'
 import { getCurrentUser } from '../../store/session'
-import { getQuestionVotes, createVote, deleteVote, updateVote } from '../../store/votes'
+import { createVote, deleteVote, updateVote } from '../../store/votes'
+import { getQuestionComments } from '../../store/comments'
 import Answer from './Answer'
+import Comment from './Comment'
 
 const QuestionShow = ({ question, answers, votes, answerVotes }) => {
   const dispatch = useDispatch();
 
   let answerArray = Object.values(answers);
+  let questionComments = Object.values(useSelector(getQuestionComments(question.id)))
   const history = useHistory();
   const currentUser = useSelector(getCurrentUser());
   const [voteTotal, setVoteTotal] = useState(0);
@@ -135,93 +138,104 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
 
   if (currentUser.id !== question.authorId) {
     return (
-    <>
-    <div id="questionTop">
-      <div id="titleNButton">
-        <h2 id='questionTitle'>{question.title}</h2>
-        <button id="askQuestionButton" onClick={() => history.push("/questions/ask")}>Ask Question</button>
-      </div>
-      <div id="date">
-        <p><span>Asked</span> {createdAtFinal}</p>
-        <p><span>Modified</span> {updatedAtFinal}</p>
-      </div>
-    </div>
-    <div>
-      <div id="voteNBody">
-      <div className="vote">
-            <button className={`upvote ${toggleColorUpvote}`}  onClick={upvote} ></button>
-            {voteTotal}
-            <button className={`downvote ${toggleColorDownvote}`} onClick={downvote} ></button>
-      </div>
-      <p id='questionBody'> {question.body}</p>
-      </div>
-        <div id='bottomOfQuestion'>
-          <div id="questionAuthorInfo">
-            <p>{user.username}</p>
+      <>
+        <div id="questionTop">
+          <div id="titleNButton">
+            <h2 id='questionTitle'>{question.title}</h2>
+            <button id="askQuestionButton" onClick={() => history.push("/questions/ask")}>Ask Question</button>
+          </div>
+          <div id="date">
+            <p><span>Asked</span> {createdAtFinal}</p>
+            <p><span>Modified</span> {updatedAtFinal}</p>
           </div>
         </div>
-      <p id='answerCount'> {numAnswers} {numAnswersText}</p>
-      <ul>
-        { answerArray.map( answer => {
+        <div>
+          <div id="voteNBody">
+            <div className="vote">
+              <button className={`upvote ${toggleColorUpvote}`} onClick={upvote} ></button>
+              {voteTotal}
+              <button className={`downvote ${toggleColorDownvote}`} onClick={downvote} ></button>
+            </div>
+            <p id='questionBody'> {question.body}</p>
+          </div>
+          <div id='bottomOfQuestion'>
+            <div id="questionAuthorInfo">
+              <p>{user.username}</p>
+            </div>
+          </div>
+          <ul>
+            {questionComments.map(comment => {
+              return <Comment key={comment.id} comment={comment} />
+            })}
+          </ul>
+            <button className="create-edit-comment"></button>
+          <p id='answerCount'> {numAnswers} {numAnswersText}</p>
+          <ul>
+            {answerArray.map(answer => {
               const answerRelatedVotes = []
               for (const [ind, answerVote] of Object.entries(answerVotes)) {
                 if (answerVote.answerId === answer.id) {
                   answerRelatedVotes.push(answerVote)
                 }
               }
-              return <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes}/>
-              })
-        }
-      </ul>
-    </div>
-    </>
+              return <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes} />
+            })
+            }
+          </ul>
+        </div>
+      </>
     )
   }
 
   return (
     <>
-    <div id="questionTop">
-    <div id="titleNButton">
-      <h2 id='questionTitle'>{question.title}</h2>
-      <button id="askQuestionButton" onClick={() => history.push("/questions/ask")}>Ask Question</button>
-    </div>
-      <div id="date">
-        <p><span>Asked</span> {createdAtFinal}</p>
-        <p><span>Modified</span> {updatedAtFinal}</p>
+      <div id="questionTop">
+        <div id="titleNButton">
+          <h2 id='questionTitle'>{question.title}</h2>
+          <button id="askQuestionButton" onClick={() => history.push("/questions/ask")}>Ask Question</button>
+        </div>
+        <div id="date">
+          <p><span>Asked</span> {createdAtFinal}</p>
+          <p><span>Modified</span> {updatedAtFinal}</p>
+        </div>
       </div>
-    </div>
-    <div>
-      <div id="voteNBody">
-      <div className="vote">
+      <div>
+        <div id="voteNBody">
+          <div className="vote">
             <button className={`upvote ${toggleColorUpvote}`} onClick={upvote}></button>
             {voteTotal}
-            <button className={`downvote ${toggleColorDownvote}`}  onClick={downvote}></button>
-      </div>
-      <p id='questionBody'> {question.body}</p>
-      </div>
+            <button className={`downvote ${toggleColorDownvote}`} onClick={downvote}></button>
+          </div>
+          <p id='questionBody'> {question.body}</p>
+        </div>
         <div id='bottomOfQuestion'>
           <div id="extralinks">
-              <Link to={`/questions/${question.id}/edit`}>Edit</Link>
-              <Link to={`/`} onClick={handleClick} >Delete</Link>
+            <Link to={`/questions/${question.id}/edit`}>Edit</Link>
+            <Link to={`/`} onClick={handleClick} >Delete</Link>
           </div>
           <div id="questionAuthorInfo">
             <p>{user.username}</p>
           </div>
         </div>
-      <p id='answerCount'> {numAnswers} {numAnswersText}</p>
-      <ul>
-        { answerArray.map( answer => {
-              const answerRelatedVotes = []
-              for (const [ind, answerVote] of Object.entries(answerVotes)) {
-                if (answerVote.answerId === answer.id) {
-                  answerRelatedVotes.push(answerVote)
-                }
+          <ul>
+            {questionComments.map(comment => {
+              return <Comment key={comment.id} comment={comment} />
+            })}
+          </ul>
+        <p id='answerCount'> {numAnswers} {numAnswersText}</p>
+        <ul>
+          {answerArray.map(answer => {
+            const answerRelatedVotes = []
+            for (const [ind, answerVote] of Object.entries(answerVotes)) {
+              if (answerVote.answerId === answer.id) {
+                answerRelatedVotes.push(answerVote)
               }
-              return <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes}/>
-              })
-        }
-      </ul>
-    </div>
+            }
+            return <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes} />
+          })
+          }
+        </ul>
+      </div>
     </>
   )
 }

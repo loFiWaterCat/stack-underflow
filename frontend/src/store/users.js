@@ -23,6 +23,17 @@ export const getAnswerUser = answer => state => {
   }
 }
 
+export const getCommentUser = comment => state => {
+  if (!state) {
+    return null;
+  } else if (!state.entities.users) {
+    return null;
+  } else {
+    const authorId = state.entities.comments[comment.id].authorId
+    return state.entities.users[authorId]
+  }
+}
+
 const  userReducer = (state = {}, action) => {
   const newState = { ...state }
   switch (action.type) {

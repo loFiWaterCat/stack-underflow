@@ -5,10 +5,12 @@ import questions from './questions';
 import answers from './answers';
 import users from './users';
 import votes from './votes';
+import comments from './comments';
 
 const entitiesReducer = combineReducers({
   questions,
   answers,
+  comments,
   users,
   votes,
 })

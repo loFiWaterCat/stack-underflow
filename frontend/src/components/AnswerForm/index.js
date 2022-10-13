@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Redirect, Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createQuestion, updateQuestion} from '../../store/questions';
 import { getCurrentUser } from '../../store/session';
 import { createAnswer, updateAnswer } from '../../store/answers'
 import './AnswerForm.scss'
