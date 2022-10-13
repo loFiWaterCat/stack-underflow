@@ -1,8 +1,10 @@
 class Api::CommentsController < ApplicationController
   wrap_parameters include: Question.attribute_names + ['userId'] + ['questionId'] + ['answerId'] + ['body']
+
   def create
+    @question = Question.find_by_id(params[:question_id])
     @comment = Comment.new(comment_params)
-    
+
     if @comment.save!
       render 'api/questions/show'
     else

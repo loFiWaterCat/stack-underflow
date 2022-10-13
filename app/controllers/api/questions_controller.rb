@@ -25,13 +25,25 @@ class Api::QuestionsController < ApplicationController
       @votes = @question.votes
     end
 
-
+    # Add the users that answered
+    # and the comments of the answers
     @answers.each do |answer|
       @users.push(answer.author)
       if answer.votes
         @votes += answer.votes
       end
+
+      if answer.comments
+        @comments += answer.comments
+      end
     end
+
+    @comments.each do |comment|
+      @users.push(comment.author)
+    end
+
+    @users = @users.uniq
+
 
     render :show
   end

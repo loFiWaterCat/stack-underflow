@@ -10,6 +10,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# Adding a comment
 class Vote < ApplicationRecord
   validates :value, inclusion: { in: [ true, false ] }
 
