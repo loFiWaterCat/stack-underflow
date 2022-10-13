@@ -37,9 +37,10 @@ const CommentForm = ({ oldComment, question, answer }) => {
       const res = resNData.res;
       const data = resNData.data;
       if (res.ok === true) {
-      } else {
-        dispatch(updateComment(comment))
       }
+    } else {
+      dispatch(updateComment(comment))
+
     }
   }
 

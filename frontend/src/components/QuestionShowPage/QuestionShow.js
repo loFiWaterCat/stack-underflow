@@ -17,6 +17,8 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
   const history = useHistory();
   const currentUser = useSelector(getCurrentUser());
   const [voteTotal, setVoteTotal] = useState(0);
+  const [createCommentForm, setCreateCommentForm] = useState(false)
+  const [editCommentForm, setEditCommentForm] = useState(false)
 
   // Calculate vote total
 
@@ -36,7 +38,7 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
 
     calcVote();
 
-  }, [answerArray, votes])
+  }, [votes])
 
   // Count of the answers
   let numAnswers = answerArray.length
@@ -135,6 +137,11 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
     }
   }
 
+  const toggleCreateCommentForm = e => {
+    console.log(createCommentForm)
+    setCreateCommentForm(!createCommentForm)
+  }
+
 
   if (currentUser.id !== question.authorId) {
     return (
@@ -168,7 +175,7 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
               return <Comment key={comment.id} comment={comment} />
             })}
           </ul>
-            <button className="create-edit-comment"></button>
+            <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
           <p id='answerCount'> {numAnswers} {numAnswersText}</p>
           <ul>
             {answerArray.map(answer => {
