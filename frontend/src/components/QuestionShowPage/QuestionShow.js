@@ -138,7 +138,6 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
   }
 
   const toggleCreateCommentForm = e => {
-    console.log(createCommentForm)
     setCreateCommentForm(!createCommentForm)
   }
 
@@ -175,6 +174,7 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
               return <Comment key={comment.id} comment={comment} />
             })}
           </ul>
+            {createCommentForm ? <Comment question={question}/> : null}
             <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
           <p id='answerCount'> {numAnswers} {numAnswersText}</p>
           <ul>

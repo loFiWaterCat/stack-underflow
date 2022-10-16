@@ -20,11 +20,20 @@ const CommentForm = ({ oldComment, question, answer }) => {
     typeText = "Save Edits"
   }
 
-  let commentData = { id: "", questionId: question.id, answer_id: answer.id,
+  let commentData = { 
+    id: "",
     author_id: currentUser.id,
     body: ""
   }
-  if (commentData) {
+
+  // Insert question or answer id
+  if (question) {
+    commentData.questionId = question.id
+  } else if (answer) {
+    commentData.answerId = answer.id
+  }
+
+  if (oldComment) {
     commentData.body = oldComment.body;
     commentData.id = oldComment.id
   }

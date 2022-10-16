@@ -28,6 +28,8 @@ export const getCommentUser = comment => state => {
     return null;
   } else if (!state.entities.users) {
     return null;
+  } else if (!comment) {
+    return null;
   } else {
     const authorId = state.entities.comments[comment.id].authorId
     return state.entities.users[authorId]
