@@ -2,6 +2,7 @@ import { getCommentUser } from "../../store/users"
 import { getCurrentUser } from "../../store/session"
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteComment } from '../../store/comments';
 import CommentForm from '../CommentForm'
 
 const Comment = ({ comment, question }) => {
@@ -31,6 +32,11 @@ const Comment = ({ comment, question }) => {
     }
   }
 
+  const deleteCommentClick = e => {
+    console.log(comment)
+    dispatch(deleteComment(comment.id))
+  }
+
 
   return (
   <>
@@ -39,6 +45,7 @@ const Comment = ({ comment, question }) => {
         <p>{comment ? author.username : ""}</p>
         {renderCommentForm()}
         {isAuthor() ? <button onClick={() => setRenderForm(!renderForm)}>Edit Comment</button>: null}
+        <button onClick={deleteCommentClick}>Delete</button>
       </li>
   </>
   )

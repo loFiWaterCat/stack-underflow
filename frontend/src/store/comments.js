@@ -67,11 +67,23 @@ export const updateComment = commentData => async dispatch => {
   dispatch({type: RECEIVE_QUESTION, payload: data})
 }
 
+export const deleteComment = commentId => async dispatch => {
+  const res = await csrfFetch(`/api/comments/${commentId}`, {
+    method: 'DELETE',
+  })
+
+  const data = await res.json();
+  dispatch({ type: REMOVE_COMMENT, payload: commentId})
+}
+
 const commentReducer = (state = {}, action) => {
   const newState = { ...state }
   switch (action.type) {
     case RECEIVE_QUESTION:
       return { ...newState, ...action.payload.comments };
+    case REMOVE_COMMENT:
+      delete newState[action.payload];
+      return newState;
     default:
       return state;
   }
