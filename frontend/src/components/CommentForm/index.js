@@ -21,7 +21,6 @@ const CommentForm = ({ oldComment, question, answer }) => {
   }
 
   let commentData = { 
-    id: "",
     author_id: currentUser.id,
     body: ""
   }
