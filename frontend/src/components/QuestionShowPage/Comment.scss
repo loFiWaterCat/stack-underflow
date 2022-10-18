@@ -1,3 +1,32 @@
 .comment {
+  padding-bottom: 10px;
+  border-bottom: 1px solid gainsboro;
   display: grid;
+  padding-left: 30px;
+
+  .comment-author {
+    text-align: right;
+  }
+
 }
+
+
+.comment-links {
+  color: gray;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 10px;
+
+  a {
+    padding-left: 10px;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+  }
+
+
+}
+

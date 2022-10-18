@@ -163,13 +163,13 @@ const Answer = ({ question, answer, votes }) => {
             <p>{author.username}</p>
           </div>
         </div>
-          <ul>
+          <ul className="comment-list">
             {answerComments.map(comment => {
               return <Comment key={comment.id}  comment={comment} />
             })}
           </ul>
           {createCommentForm ? <Comment question={question} answer={answer}/> : null}
-          <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
+          <a className="create-comment" onClick={toggleCreateCommentForm}>Create Comment</a>
       </div>
     )
   }
@@ -200,13 +200,13 @@ const Answer = ({ question, answer, votes }) => {
             <p>{author.username}</p>
           </div>
         </div>
-        <ul>
+        <ul className="comment-list">
           {answerComments.map(comment => {
             return <Comment key={comment.id} comment={comment} />
           })}
         </ul>
         {createCommentForm ? <Comment question={question} answer={answer} /> : null}
-        <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
+        <a className="create-comment" onClick={toggleCreateCommentForm}>Create Comment</a>
       </div>
     )
   }

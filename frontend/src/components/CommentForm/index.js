@@ -11,7 +11,7 @@ const CommentForm = ({ oldComment, question, answer }) => {
 
   let currentUser = useSelector(getCurrentUser());
 
-  let type = "Edit Comment"
+  let type = "Edit"
   if (!oldComment) type = "Create Comment"
   let typeText = ""
   if (type === "Create Comment") {

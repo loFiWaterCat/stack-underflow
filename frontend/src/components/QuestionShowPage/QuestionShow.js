@@ -169,14 +169,15 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
               <p>{user.username}</p>
             </div>
           </div>
-          <ul>
+          <ul className="comment-list">
             {questionComments.map(comment => {
               return <Comment key={comment.id} comment={comment} />
             })}
           </ul>
           {createCommentForm ? <Comment question={question} /> : null}
-          <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
-          <p id='answerCount'> {numAnswers} {numAnswersText}</p>
+            <a className="create-comment" onClick={toggleCreateCommentForm}>Create Comment</a>
+          
+            <p id='answerCount'> {numAnswers} {numAnswersText}</p>
           <ul>
             {answerArray.map(answer => {
               const answerRelatedVotes = []
@@ -226,13 +227,13 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
             <p>{user.username}</p>
           </div>
         </div>
-        <ul>
+        <ul className="comment-list">
           {questionComments.map(comment => {
             return <Comment key={comment.id} comment={comment} />
           })}
         </ul>
         {createCommentForm ? <Comment question={question} /> : null}
-        <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
+        <a className="create-comment" onClick={toggleCreateCommentForm}>Create Comment</a>
 
         <p id='answerCount'> {numAnswers} {numAnswersText}</p>
         <ul>

@@ -62,6 +62,7 @@
 
 #answerCount {
   font-size: 23px;
+  padding-top: 23px;
 }
 
 .answer {
@@ -105,6 +106,7 @@
 }
 
 #extralinks {
+  padding-left: 50px;
   display: flex;
 
   a {
@@ -174,3 +176,21 @@
   border-top: 15px solid orange;
 }
 
+.comment-list {
+  border-top: 1px solid lightgray;
+  margin-left: 50px;
+  padding-top: 10px;
+  display: grid;
+  grid-gap: 10px;
+  padding-bottom: 10px;
+}
+
+.create-comment {
+  color: gray;
+  margin-left: 50px;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

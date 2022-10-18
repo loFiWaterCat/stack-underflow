@@ -34,21 +34,23 @@ const Comment = ({ comment, question, answer }) => {
   }
 
   const deleteCommentClick = e => {
-    console.log(comment)
     dispatch(deleteComment(comment.id))
   }
 
 
   return (
-  <>
+    <>
       <li className="comment">
-        <p>{comment ? comment.body : ""}</p>
-        <p>{comment ? author.username : ""}</p>
+        <div className="comment-contents">
+          <p>{comment ? comment.body + " - " +  author.username  : ""}</p>
+        </div>
         {renderCommentForm()}
-        {isAuthor() ? <a onClick={() => setRenderForm(!renderForm)}>Edit Comment</a>: null}
-        {isAuthor() ? <a onClick={deleteCommentClick}>Delete</a> : null}
+        <div className="comment-links">
+          {isAuthor() ? <a onClick={() => setRenderForm(!renderForm)}>Edit</a> : null}
+          {isAuthor() ? <a onClick={deleteCommentClick}>Delete</a> : null}
+        </div>
       </li>
-  </>
+    </>
   )
 }
 
