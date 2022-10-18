@@ -12,7 +12,7 @@ export const getQuestionComments = questionId => state => {
   } else {
     const relatedComments = {} 
     for (const [ind, comment] of Object.entries(state.entities.comments)) {
-      if (comment.questionId == questionId) {
+      if (comment.questionId == questionId && !comment.answerId) {
         relatedComments[ind] = comment;
       }
     }

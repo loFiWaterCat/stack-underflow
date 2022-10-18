@@ -12,6 +12,7 @@ import Comment from './Comment'
 const Answer = ({ question, answer, votes }) => {
   const dispatch = useDispatch()
   const [form, setForm] = useState(false)
+  const [createCommentForm, setCreateCommentForm] = useState(false)
 
 
   const author = useSelector(getAnswerUser(answer));
@@ -63,6 +64,10 @@ const Answer = ({ question, answer, votes }) => {
 
   const toggleForm = e => {
     setForm(!form)
+  }
+
+  const toggleCreateCommentForm = e => {
+    setCreateCommentForm(!createCommentForm)
   }
 
   const deleteAnswerClick = e => {
@@ -160,9 +165,11 @@ const Answer = ({ question, answer, votes }) => {
         </div>
           <ul>
             {answerComments.map(comment => {
-              return <Comment key={comment.id} comment={comment} />
+              return <Comment key={comment.id}  comment={comment} />
             })}
           </ul>
+          {createCommentForm ? <Comment question={question} answer={answer}/> : null}
+          <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
       </div>
     )
   }
@@ -193,6 +200,13 @@ const Answer = ({ question, answer, votes }) => {
             <p>{author.username}</p>
           </div>
         </div>
+        <ul>
+          {answerComments.map(comment => {
+            return <Comment key={comment.id} comment={comment} />
+          })}
+        </ul>
+        {createCommentForm ? <Comment question={question} answer={answer} /> : null}
+        <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
       </div>
     )
   }

@@ -28,7 +28,9 @@ const CommentForm = ({ oldComment, question, answer }) => {
   // Insert question or answer id
   if (question) {
     commentData.questionId = question.id
-  } else if (answer) {
+  }
+
+  if (answer) {
     commentData.answerId = answer.id
   }
 
@@ -39,9 +41,10 @@ const CommentForm = ({ oldComment, question, answer }) => {
 
   const [comment, setComment] = useState(commentData);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (type === "Create Comment") {
-      const resNData = dispatch(createComment(comment))
+     
+      const resNData = await dispatch(createComment(comment))
       const res = resNData.res;
       const data = resNData.data;
       if (res.ok === true) {

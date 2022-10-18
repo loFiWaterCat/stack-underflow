@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteComment } from '../../store/comments';
 import CommentForm from '../CommentForm'
+import './Comment.scss'
 
-const Comment = ({ comment, question }) => {
+const Comment = ({ comment, question, answer }) => {
   const dispatch = useDispatch();
   const author = useSelector(getCommentUser(comment))
   const currentUser = useSelector(getCurrentUser())
@@ -28,7 +29,7 @@ const Comment = ({ comment, question }) => {
       return <CommentForm oldComment={comment}/>
     } else if (!comment) {
       // Renders the comment form for creation
-      return <CommentForm question={question}/>
+      return <CommentForm question={question} answer={answer}/>
     }
   }
 
@@ -40,12 +41,12 @@ const Comment = ({ comment, question }) => {
 
   return (
   <>
-      <li>
+      <li className="comment">
         <p>{comment ? comment.body : ""}</p>
         <p>{comment ? author.username : ""}</p>
         {renderCommentForm()}
-        {isAuthor() ? <button onClick={() => setRenderForm(!renderForm)}>Edit Comment</button>: null}
-        <button onClick={deleteCommentClick}>Delete</button>
+        {isAuthor() ? <a onClick={() => setRenderForm(!renderForm)}>Edit Comment</a>: null}
+        {isAuthor() ? <a onClick={deleteCommentClick}>Delete</a> : null}
       </li>
   </>
   )

@@ -174,8 +174,8 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
               return <Comment key={comment.id} comment={comment} />
             })}
           </ul>
-            {createCommentForm ? <Comment question={question}/> : null}
-            <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
+          {createCommentForm ? <Comment question={question} /> : null}
+          <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
           <p id='answerCount'> {numAnswers} {numAnswersText}</p>
           <ul>
             {answerArray.map(answer => {
@@ -185,7 +185,9 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
                   answerRelatedVotes.push(answerVote)
                 }
               }
-              return <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes} />
+              return (
+                <Answer key={answer.id} question={question} answer={answer} votes={answerRelatedVotes} />
+              )
             })
             }
           </ul>
@@ -224,11 +226,14 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
             <p>{user.username}</p>
           </div>
         </div>
-          <ul>
-            {questionComments.map(comment => {
-              return <Comment key={comment.id} comment={comment} />
-            })}
-          </ul>
+        <ul>
+          {questionComments.map(comment => {
+            return <Comment key={comment.id} comment={comment} />
+          })}
+        </ul>
+        {createCommentForm ? <Comment question={question} /> : null}
+        <a onClick={toggleCreateCommentForm}>Create Comment TODO</a>
+
         <p id='answerCount'> {numAnswers} {numAnswersText}</p>
         <ul>
           {answerArray.map(answer => {
