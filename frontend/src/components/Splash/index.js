@@ -46,7 +46,7 @@ const Splash = () => {
           <div id="white-circle">
           </div>
           <div id="left-bottom">
-            <p>A public platform building the definitive
+            <p id="bottom-first">A public platform building the definitive
               collection of coding questions & answers</p>
             <p>A community-based space to find and contribute answers to technical
               challenges, and one of the most popular websites in the world.</p>
@@ -54,9 +54,17 @@ const Splash = () => {
           </div>
 
           <div id="right-bottom">
+            <p id="bottom-first">
+              Returning?
+            </p>
+              <p>
+              Find all the answers to your questions from reputable users
+              </p>
             {alreadyInButton()}
           </div>
         </div>
+      </div>
+      <div id="about-links">
       </div>
     </div>
   );

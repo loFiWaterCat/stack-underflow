@@ -84,7 +84,16 @@
 
   p {
     text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 30px;
+
   }
+}
+
+#bottom-first {
+  font-weight: bold;
+  font-size: 30px;
 }
 
 
@@ -119,10 +128,14 @@
   margin-left: 10%;
   z-index: 1;
   max-width: 70%;
-  min-width: 400px;;
+  min-width: 400px;
 
   p {
     text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 30px;
+
   }
 }
 
