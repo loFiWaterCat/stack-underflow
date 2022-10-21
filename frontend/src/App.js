@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage";
 import Splash from "./components/Splash";
 import QuestionShowPage from "./components/QuestionShowPage"
 import QuestionForm from "./components/QuestionForm"
+import './container.scss'
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -24,7 +25,8 @@ function App() {
 
   return (
     <>
-      <Navigation />
+      <div id="container">
+        <Navigation />
         <Switch>
           <Route path="/login">
             <LoginFormPage />
@@ -48,6 +50,7 @@ function App() {
             <ErrorPage />
           </Route>
         </Switch>
+      </div>
     </>
   );
 }

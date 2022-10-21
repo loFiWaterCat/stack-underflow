@@ -67,10 +67,26 @@ const QuestionForm = () => {
             <input id="createQuestionButton" type={'submit'} value={typeText}/>
           </form>
         </div>
-      <div id="questionGuidelines">
-          <p>TODOOOOOO</p>
-          <p>Step 1, draft your question</p>
-      </div>
+        <div id="questionGuidelines">
+          <p className="number-steps">Step 1: Draft your question</p>
+          <p className="guideline-text">The community is here to help you with specific coding,
+            algorithm, or language problems.
+            <br />
+            Avoid asking opinion-based questions.
+          </p>
+          <p className="inner-number-steps">
+            <span class="blue-number">1. </span>
+            Summarize the problem
+          </p>
+          <p className="inner-number-steps">
+            <span class="blue-number">2. </span>
+            Describe what you've tried
+          </p>
+          <p className="inner-number-steps">
+            <span class="blue-number">3. </span>
+            Show some code
+          </p>
+        </div>
       </div>
     </div>
   )

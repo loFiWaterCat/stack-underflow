@@ -1,8 +1,8 @@
 #questionShowPage {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  height: 100%;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 #titleNButton {
@@ -62,7 +62,7 @@
 
 #answerCount {
   font-size: 23px;
-  padding-top: 23px;
+  padding-top: 45px;
 }
 
 .answer {
@@ -187,10 +187,24 @@
 
 .create-comment {
   color: gray;
-  margin-left: 50px;
+  width: 100%;
+  text-align: right;
 
   &:hover {
     cursor: pointer;
     text-decoration: underline;
   }
 }
+
+.create-comment-question {
+  color: gray;
+  position: absolute;
+  left: 81%;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+}
+

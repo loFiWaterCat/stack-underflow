@@ -41,12 +41,12 @@ function SignupFormPage() {
     <div id={'signupPage'}>
     <div id={'signupBlurb'}>
       <h2>Join the Stack Underflow community</h2>
-      <p><i class="fa-regular fa-circle-question"></i> Get unstuck - ask a question</p>
-      <p> <i class="fa-solid fa-arrow-up"></i> Unlock new priveleges like voting and commenting </p>
-      <p><i class="fa-solid fa-tags"></i> Save your favorite tags, filters, and jobs</p>
-      <p><i class="fa-solid fa-trophy"></i> Earn reputation and badges </p>
+      <p><i className="fa-regular fa-circle-question"></i> Get unstuck - ask a question</p>
+      <p> <i className="fa-solid fa-arrow-up"></i> Unlock new priveleges like voting and commenting </p>
+      <p><i className="fa-solid fa-tags"></i> Save your favorite tags, filters, and jobs</p>
+      <p><i className="fa-solid fa-trophy"></i> Earn reputation and badges </p>
     </div>
-    <form class={"signupForm"} onSubmit={handleSubmit}>
+    <form className={"signupForm"} onSubmit={handleSubmit}>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>

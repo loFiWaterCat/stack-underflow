@@ -155,7 +155,7 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
             <p><span>Modified</span> {updatedAtFinal}</p>
           </div>
         </div>
-        <div>
+        <div id="the-rest">
           <div id="voteNBody">
             <div className="vote">
               <button className={`upvote ${toggleColorUpvote}`} onClick={upvote} ></button>
@@ -175,7 +175,7 @@ const QuestionShow = ({ question, answers, votes, answerVotes }) => {
             })}
           </ul>
           {createCommentForm ? <Comment question={question} /> : null}
-            <a className="create-comment" onClick={toggleCreateCommentForm}>Create Comment</a>
+            <a className="create-comment-question" onClick={toggleCreateCommentForm}>Create Comment</a>
           
             <p id='answerCount'> {numAnswers} {numAnswersText}</p>
           <ul>
