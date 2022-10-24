@@ -3,4 +3,21 @@
   width: 100%;
   display: grid;
   grid-template-rows: 50px 1fr;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+#navbar {
+  grid-column: 1 / -1;
+}
+
+#about-bar {
+  grid-column: 2 / 4;
+}
+
+#homePage {
+  grid-column: 4 / 12;
+}
+
+#questionShowPage {
+  grid-column: 4 / 12;
 }

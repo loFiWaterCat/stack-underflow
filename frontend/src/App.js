@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage";
 import Splash from "./components/Splash";
 import QuestionShowPage from "./components/QuestionShowPage"
 import QuestionForm from "./components/QuestionForm"
+import AboutBar from "./components/AboutBar"
 import './container.scss'
 
 function App() {
@@ -17,7 +18,11 @@ function App() {
 
   const rootPage = () => {
     if (sessionUser) {
-      return <HomePage />;
+      return (
+        <>
+          <AboutBar />
+          <HomePage />
+        </>);
     } else {
       return <Splash />;
     }
@@ -44,6 +49,7 @@ function App() {
             <QuestionForm />
           </Route>
           <Route exact path="/questions/:questionId">
+            <AboutBar class="about-bar"/>
             <QuestionShowPage />
           </Route>
           <Route path="*">
