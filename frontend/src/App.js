@@ -10,7 +10,7 @@ import HomePage from "./components/HomePage";
 import Splash from "./components/Splash";
 import QuestionShowPage from "./components/QuestionShowPage"
 import QuestionForm from "./components/QuestionForm"
-import AboutBar from "./components/AboutBar"
+import SideBar from "./components/SideBar"
 import './container.scss'
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     if (sessionUser) {
       return (
         <>
-          <AboutBar />
+          <SideBar />
           <HomePage />
         </>);
     } else {
@@ -49,7 +49,7 @@ function App() {
             <QuestionForm />
           </Route>
           <Route exact path="/questions/:questionId">
-            <AboutBar class="about-bar"/>
+            <SideBar />
             <QuestionShowPage />
           </Route>
           <Route path="*">
