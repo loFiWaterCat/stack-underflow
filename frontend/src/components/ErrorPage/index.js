@@ -7,7 +7,7 @@ import './ErrorPage.css'
 const ErrorPage = () => {
   return (
     <div id="errorPage">
-    <i class="fa-solid fa-triangle-exclamation"></i>
+    <i className="fa-solid fa-triangle-exclamation"></i>
     <div id="errorMessage">
       <p>Page not found</p>
       <p>We're sorry, we couldn't find the page you requested</p> 

@@ -10,7 +10,7 @@
   grid-column: 1 / -1;
 }
 
-#about-bar {
+#side-bar {
   grid-column: 2 / 4;
 }
 
@@ -20,4 +20,24 @@
 
 #questionShowPage {
   grid-column: 4 / 12;
+}
+
+#splash-page {
+  grid-column: 1 / -1;
+}
+
+#loginPage {
+  grid-column: 1 / -1;
+}
+
+#signupPage {
+  grid-column: 1 / -1;
+}
+
+#errorPage {
+  grid-column: 1 / -1;
+}
+
+#questionFormPage {
+  grid-column: 1 / -1;
 }

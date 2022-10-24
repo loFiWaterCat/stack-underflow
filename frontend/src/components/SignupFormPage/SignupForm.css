@@ -8,7 +8,6 @@
 #signupBlurb {
   display: flex;
   flex-direction: column;
-  margin-top: 15%;
   margin-right: 50px;
   width: 45%
 }
@@ -33,7 +32,6 @@
 }
 
 .signupForm {
-  margin-top: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;

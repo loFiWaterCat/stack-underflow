@@ -64,8 +64,6 @@ const Splash = () => {
           </div>
         </div>
       </div>
-      <div id="about-links">
-      </div>
     </div>
   );
 }

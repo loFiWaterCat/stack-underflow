@@ -1,9 +1,9 @@
 import { getQuestion, fetchQuestion } from '../../store/questions.js'
 import { getQuestionAnswers } from '../../store/answers.js'
 import { getQuestionVotes, getAnswerVotes } from '../../store/votes'
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
+import { useEffect, useRef, useState } from "react";
 import QuestionShow from './QuestionShow.js'
 import AnswerForm from '../AnswerForm'
 import './QuestionShowPage.scss'
@@ -13,6 +13,7 @@ const QuestionShowPage = () => {
   const dispatch = useDispatch();
   const { questionId } = useParams();
   const history = useHistory();
+  const didMount = useRef(false);
 
   useEffect( () => {
     dispatch(fetchQuestion(questionId))
@@ -23,7 +24,16 @@ const QuestionShowPage = () => {
   const votes = useSelector(getQuestionVotes(questionId));
   const answerVotes = useSelector(getAnswerVotes(answers));
 
-  if (!question) return null;
+  if (didMount.current) {
+
+  } else {
+    didMount.current = true;
+    return null;
+  }
+  if (!question) {
+    history.push("/errorpage");
+    return null;
+  };
 
   return (
     <div id='questionShowPage'>

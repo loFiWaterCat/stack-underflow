@@ -75,15 +75,15 @@ const QuestionForm = () => {
             Avoid asking opinion-based questions.
           </p>
           <p className="inner-number-steps">
-            <span class="blue-number">1. </span>
+            <span className="blue-number">1. </span>
             Summarize the problem
           </p>
           <p className="inner-number-steps">
-            <span class="blue-number">2. </span>
+            <span className="blue-number">2. </span>
             Describe what you've tried
           </p>
           <p className="inner-number-steps">
-            <span class="blue-number">3. </span>
+            <span className="blue-number">3. </span>
             Show some code
           </p>
         </div>

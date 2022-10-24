@@ -1,0 +1,53 @@
+#side-bar {
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  border-right: 1px solid lightgray;
+  padding-left: 10px;
+  font-size: 15px;
+  position: sticky;
+
+  p {
+    padding-bottom: 10px;
+    margin-left: 10px;
+    color: black;
+  }
+}
+
+.category {
+}
+
+#side-home {
+  height: 30px;
+  margin-top: 30px;
+  padding-top: 10px;
+  color: gray;
+  padding-left: 10px;
+
+  &:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+    border-right: 3px solid orange;
+  }
+}
+
+#about-links {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  text-decoration: none;
+  color: gray;
+
+  &:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+    border-right: 3px solid orange;
+  }
+}

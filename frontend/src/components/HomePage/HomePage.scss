@@ -1,6 +1,5 @@
 #homePage {
   display: grid;
-  margin-left: 40px;
   margin-right: 40px;
 }
 
@@ -29,6 +28,7 @@
   border-top: 1px solid lightgray;
   padding-top: 20px;
   padding-bottom: 20px;
+  padding-left: 30px;
 
 
   #userStats {
@@ -42,6 +42,10 @@
 .questionItem a {
   text-decoration: none;
   color: #0b80d9;
+
+  &:hover {
+    color: #004aab;
+  }
 }
 
 #askQuestionButton {

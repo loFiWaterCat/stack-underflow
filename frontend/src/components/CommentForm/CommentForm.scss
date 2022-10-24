@@ -1,0 +1,18 @@
+textarea {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60%;
+}
+
+#createCommentButton {
+  background: none;
+  border: none; 
+  color: gray;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
