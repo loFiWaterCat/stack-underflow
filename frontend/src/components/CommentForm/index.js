@@ -59,7 +59,7 @@ const CommentForm = ({ oldComment, question, answer }) => {
     <div>
       <form id="commentForm" onSubmit={handleSubmit}>
         <label>Your Comment</label>
-        <textarea value={comment.body} onChange={e => setComment({...comment, body: e.target.value})} maxLength="500"/>
+        <textarea value={comment.body} onChange={e => setComment({...comment, body: e.target.value})} maxLength="1000"/>
         <input id="createCommentButton" type={'submit'} value={typeText}/>
       </form>
     </div>
