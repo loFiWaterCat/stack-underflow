@@ -19,8 +19,9 @@ const Splash = () => {
       </div>
       <div className="blue-square" id="square-2">
       </div>
-      <div className="blue-square" id="square-3">
-      </div>
+      <div className="blue-square" id="square-3"></div>
+      <div className="green-square" id="square-4"></div>
+      <div className="green-square" id="square-5"></div>
       <div id="part-one">
         <div id="part-one-top">
           <div id="left-top">
@@ -64,6 +65,13 @@ const Splash = () => {
           </div>
         </div>
       </div>
+      <div id="about-links-splash">
+        <p>About Me Links:</p>
+        <a className="about-link-splash" href="https://github.com/lofiwatercat" target="_blank">Github</a>
+        <a className="about-link-splash" href="https://www.linkedin.com/in/alan-tran-kiem-971210252/" target="_blank">Linked In</a>
+        <a className="about-link-splash" href="https://angel.co/u/alan-tran-kiem" target="_blank">Angel List</a>
+      </div>
+
     </div>
   );
 }

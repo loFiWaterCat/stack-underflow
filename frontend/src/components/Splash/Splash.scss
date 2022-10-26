@@ -12,6 +12,11 @@
       padding-top: 40px;
       grid-gap: 30px;
       justify-items: center;
+
+      p {
+        margin-left: 30px;
+        margin-right: 30px;
+      }
     }
 
     #part-one-bottom {
@@ -39,6 +44,8 @@
   font-size: 50px;
   text-align: center;
   line-height: 160%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 
   #orange-text {
     color: #ef730d;
@@ -170,8 +177,8 @@
   position: absolute;
   width: 100%;
   left: 0px;
-  bottom: -140%;
   height: 100%;
+  margin-top: 10%;
   z-index: 1;
 }
 
@@ -192,6 +199,14 @@
   z-index: 1;
 }
 
+.green-square {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  background-color: #00cc00;
+  z-index: 1;
+}
+
 #square-1 {
   border-radius: 9px;
   left: 1%;
@@ -205,9 +220,24 @@
 }
 #square-3 {
   border-radius: 0px 9px 9px 9px;
-  top: 75.5%;
+  top: 68%;
+  margin-top: 60px;
   right: 20px;
   opacity: 0.5;
+}
+
+#square-4 {
+  top: 95%;
+  left: 160px;
+  border-radius: 9px 9px 9px 0px;
+  opacity: 0.5;
+}
+
+#square-5 {
+  top: 95%;
+  margin-top: 60px;
+  left: 100px;
+  border-radius: 9px 0px 9px 9px;
 }
 
 #about-links-splash {
@@ -217,3 +247,22 @@
   bottom: 10px;
 }
 
+#about-links-splash {
+  position: absolute;
+  z-index: 10;
+  bottom: -120%;
+  padding-left: 5%;
+  p {
+    padding-bottom: 30px;
+  }
+}
+
+.about-link-splash {
+  margin-right: 30px;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
