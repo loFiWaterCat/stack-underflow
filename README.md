@@ -1,24 +1,4 @@
-# README
+# Stack Underflow
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Stack Underflow is a clone of Stack Overflow, if you couldn't already tell. It provides a forum for users to ask questions and recieve answers, as well as a voting system for the community to filter out unproductive questions and answers.
