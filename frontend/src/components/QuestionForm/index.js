@@ -85,11 +85,11 @@ const QuestionForm = () => {
             <label>Title</label>
               <p>Be specific and imagine you're asking a question to another person</p>
               <p>Characters: {questionTitleLength} (3-150)</p>
-              <input id="title" value={question.title} onChange={updateQuestionTitle} />
+              <input maxLength="150" id="title" value={question.title} onChange={updateQuestionTitle} />
             <label>Body</label>
               <p>Include all the information someone would need to answer your question</p>
               <p>Characters: {questionBodyLength} (3-150)</p>
-              <textarea value={question.body} onChange={updateQuestionBody} />
+              <textarea maxLength="30000" value={question.body} onChange={updateQuestionBody} />
             <input id="createQuestionButton" disabled={!valid} type={'submit'} value={typeText}/>
           </form>
         </div>

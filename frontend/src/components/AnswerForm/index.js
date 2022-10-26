@@ -28,6 +28,19 @@ const AnswerForm = ({ question, resultAnswer }) => {
   }
 
   const [answer, setAnswer] = useState(answerData);
+  const [answerLength, setAnswerLength] = useState(answer.body.length)
+  const [valid, setValid] = useState(false)
+
+  const updateAnswerBody = e => {
+    setAnswer({ ...answer, title: e.target.value });
+    setAnswerLength(e.target.value.length)
+    if (answerLength >= 1 && answerLength <= 30000) {
+      setValid(true)
+    } else {
+      setValid(false)
+    }
+  }
+
 
   const handleSubmit = (e) => {
     if (type === "Create Answer") {
@@ -46,8 +59,8 @@ const AnswerForm = ({ question, resultAnswer }) => {
     <div>
       <form id="answerForm" onSubmit={handleSubmit}>
         <label>Your Answer</label>
-        <textarea value={answer.body} onChange={e => setAnswer({...answer, body: e.target.value})} />
-        <input id="createAnswerButton" type={'submit'} value={typeText}/>
+        <textarea maxLength="30000" value={answer.body} onChange={updateAnswerBody} />
+        <input id="createAnswerButton" type={'submit'} value={typeText} disabled={!valid}/>
       </form>
     </div>
   )
