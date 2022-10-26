@@ -31,10 +31,32 @@ const QuestionForm = () => {
   questionData.authorId = useSelector(getCurrentUser()).id
 
   const [question, setQuestion] = useState(questionData)
-  const [questionLength, setQuestionLength] = useState(question.body.length)
+  const [questionTitleLength, setQuestionTitleLength] = useState(question.title.length)
+  const [questionBodyLength, setQuestionBodyLength] = useState(question.body.length)
   const [valid, setValid] = useState(false)
 
   let history = useHistory();
+
+  const updateQuestionTitle = e => {
+    setQuestion({...question, title: e.target.value});
+    setQuestionTitleLength(e.target.value.length)
+    if (questionTitleLength >= 3 && questionTitleLength <= 150) {
+      setValid(true)
+    } else {
+      setValid(false)
+    }
+  }
+
+  const updateQuestionBody = e => {
+    setQuestion({...question, body: e.target.value});
+    setQuestionBodyLength(e.target.value.length)
+
+    if (questionBodyLength >= 3 && questionBodyLength <= 150) {
+      setValid(true)
+    } else {
+      setValid(false)
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,11 +84,13 @@ const QuestionForm = () => {
           <form id="questionForm" onSubmit={handleSubmit}>
             <label>Title</label>
               <p>Be specific and imagine you're asking a question to another person</p>
-              <input id="title" value={question.title} onChange={e => setQuestion({...question, title: e.target.value})} />
+              <p>Characters: {questionTitleLength} (3-150)</p>
+              <input id="title" value={question.title} onChange={updateQuestionTitle} />
             <label>Body</label>
               <p>Include all the information someone would need to answer your question</p>
-              <textarea value={question.body} onChange={e => setQuestion({...question, body: e.target.value})} />
-            <input id="createQuestionButton" type={'submit'} value={typeText}/>
+              <p>Characters: {questionBodyLength} (3-150)</p>
+              <textarea value={question.body} onChange={updateQuestionBody} />
+            <input id="createQuestionButton" disabled={!valid} type={'submit'} value={typeText}/>
           </form>
         </div>
         <div id="questionGuidelines">
