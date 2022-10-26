@@ -31,6 +31,8 @@ const QuestionForm = () => {
   questionData.authorId = useSelector(getCurrentUser()).id
 
   const [question, setQuestion] = useState(questionData)
+  const [questionLength, setQuestionLength] = useState(question.body.length)
+  const [valid, setValid] = useState(false)
 
   let history = useHistory();
 

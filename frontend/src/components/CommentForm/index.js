@@ -40,6 +40,18 @@ const CommentForm = ({ oldComment, question, answer }) => {
   }
 
   const [comment, setComment] = useState(commentData);
+  const [commentLength, setCommentLength] = useState(comment.body.length)
+  const [valid, setValid] = useState(false)
+
+  const updateCommentBody = e => {
+    setComment({...comment, body: e.target.value});
+    setCommentLength(e.target.value.length)
+    if (commentLength >= 15 && commentLength <= 500) {
+      setValid(true)
+    } else {
+      setValid(false)
+    }
+  }
 
   const handleSubmit = async (e) => {
     if (type === "Create Comment") {
@@ -51,16 +63,16 @@ const CommentForm = ({ oldComment, question, answer }) => {
       }
     } else {
       dispatch(updateComment(comment))
-
     }
   }
 
   return (
     <div>
       <form id="commentForm" onSubmit={handleSubmit}>
-        <label>Your Comment</label>
-        <textarea value={comment.body} onChange={e => setComment({...comment, body: e.target.value})} maxLength="1000"/>
-        <input id="createCommentButton" type={'submit'} value={typeText}/>
+        <label>Your Comment:</label>
+        <textarea value={comment.body} onChange={updateCommentBody} maxLength="500"/>
+        <input id="createCommentButton" type={'submit'} value={typeText} />
+        <p>Characters: {commentLength} (min 15)</p>
       </form>
     </div>
   )

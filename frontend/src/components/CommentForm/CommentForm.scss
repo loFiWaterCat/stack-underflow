@@ -1,3 +1,9 @@
+#commentForm {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 textarea {
   margin-top: 10px;
   margin-left: 10px;
@@ -7,6 +13,7 @@ textarea {
 
 #createCommentButton {
   background: none;
+  text-align: right;
   border: none; 
   color: gray;
 
