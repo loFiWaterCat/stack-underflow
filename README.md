@@ -6,4 +6,4 @@ Stack Underflow is a clone of Stack Overflow, if you couldn't already tell. It p
 ## Splash Page
 ---
 The first thing a user sees with quick links to log in and sign up.
-![](https://github.com/loFiWaterCat/stack-underflow//images/splash.png)
+![](https://github.com/loFiWaterCat/stack-underflow/blob/images/splash.png)
