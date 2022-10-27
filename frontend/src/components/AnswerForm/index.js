@@ -32,7 +32,7 @@ const AnswerForm = ({ question, resultAnswer }) => {
   const [valid, setValid] = useState(false)
 
   const updateAnswerBody = e => {
-    setAnswer({ ...answer, title: e.target.value });
+    setAnswer({ ...answer, body: e.target.value });
     setAnswerLength(e.target.value.length)
     if (answerLength >= 1 && answerLength <= 30000) {
       setValid(true)
