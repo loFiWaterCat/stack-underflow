@@ -74,7 +74,6 @@ const QuestionForm = () => {
     }
   };
 
-  console.log(question)
 
   return (
     <div id="questionFormPage">
