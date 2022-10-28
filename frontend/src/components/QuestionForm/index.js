@@ -51,7 +51,7 @@ const QuestionForm = () => {
     setQuestion({...question, body: e.target.value});
     setQuestionBodyLength(e.target.value.length)
 
-    if (questionBodyLength >= 3 && questionBodyLength <= 150) {
+    if (questionBodyLength >= 3 && questionBodyLength <= 30000) {
       setValid(true)
     } else {
       setValid(false)
@@ -88,7 +88,7 @@ const QuestionForm = () => {
               <input maxLength="150" id="title" value={question.title} onChange={updateQuestionTitle} />
             <label>Body</label>
               <p>Include all the information someone would need to answer your question</p>
-              <p>Characters: {questionBodyLength} (3-150)</p>
+              <p>Characters: {questionBodyLength} (3-30000)</p>
               <textarea maxLength="30000" value={question.body} onChange={updateQuestionBody} />
             <input id="createQuestionButton" disabled={!valid} type={'submit'} value={typeText}/>
           </form>
